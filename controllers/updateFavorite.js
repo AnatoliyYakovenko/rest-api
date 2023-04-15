@@ -1,12 +1,12 @@
 const createError = require("../helpers/createError");
 const { Contact } = require("../models/contact");
-const { addSchema } = require("../middleware/validation");
+const { updateFavoriteSchema } = require("../middleware/validation");
 
-const updateById = async (req, res) => {
+const updateFavorite = async (req, res) => {
   const { contactId } = req.params;
   const body = req.body;
 
-  const { error } = addSchema.validate(body);
+  const { error } = updateFavoriteSchema.validate(body);
   if (error) {
     throw createError(400, error.message);
   }
@@ -20,4 +20,4 @@ const updateById = async (req, res) => {
   res.json(result);
 };
 
-module.exports = updateById;
+module.exports = updateFavorite;
