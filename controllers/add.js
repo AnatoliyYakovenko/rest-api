@@ -1,4 +1,4 @@
-const { addContact } = require("../models/contacts");
+const { addContact } = require("../models/contact");
 const { addSchema } = require("../middleware/validation");
 const createError = require("../helpers/createError");
 
