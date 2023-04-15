@@ -2,15 +2,16 @@ const express = require("express");
 const logger = require("morgan");
 const cors = require("cors");
 const mongoose = require("mongoose");
+const dotenv = require("dotenv").config();
 
 const contactsRouter = require("./routes/api/contacts");
 
 const app = express();
 
 const formatsLogger = app.get("env") === "development" ? "dev" : "short";
+const { DB_HOST } = process.env;
+console.log(process.env);
 
-DB_HOST =
-  "mongodb+srv://Ayakov1984:Ayakov1984@cluster0.faourmi.mongodb.net/contacts?retryWrites=true&w=majority";
 mongoose.set("strictQuery", false);
 
 mongoose
