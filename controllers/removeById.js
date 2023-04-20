@@ -1,4 +1,4 @@
-const createError = require("../helpers/createError");
+const { createError } = require("../helpers");
 const { Contact } = require("../models/contact");
 
 const removeById = async (req, res, next) => {
