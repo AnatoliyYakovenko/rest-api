@@ -4,6 +4,8 @@ const cors = require("cors");
 const mongoose = require("mongoose");
 require("dotenv").config();
 
+const { SECRET_KEY } = process.env;
+
 const authRouter = require("./routes/api/auth");
 const contactsRouter = require("./routes/api/contacts");
 
