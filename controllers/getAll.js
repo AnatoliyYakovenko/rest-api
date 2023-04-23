@@ -12,15 +12,20 @@ const paginate = require("mongoose-paginate-v2");
 
 const getAll = async (req, res) => {
   const page = parseInt(req.query.page) || 1;
-  const limit = parseInt(req.query.limit) || 2;
+  const limit = parseInt(req.query.limit) || 3;
+  const favorite = req.query.favorite;
+  const filter = {};
   const options = {
     page,
     limit,
-    sort: { author: 1 },
+    sort: { name: 1 },
   };
 
-  const result = await Contact.paginate({}, options);
-  res.json(result);
+  if (favorite !== undefined) {
+    filter.favorite = favorite;
+  }
+  let contacts = await Contact.find(filter);
+  contacts = await Contact.paginate({}, options);
+  res.json(contacts);
 };
-
 module.exports = getAll;
